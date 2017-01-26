@@ -1,0 +1,28 @@
+<div class="row">
+    <h1>Burger Tracker</h1>
+    <h3>Eat burgers. Track your progress.  Have fun!</h3>
+    <img src="/assets/img/burger.jpg" alt="burger" class="main-image">
+    <h2>Add a new Burger to your list!</h2>
+    <form action="/api" method="POST">
+        <input type="text" name="burgerName" placeholder="Enter burger name here">
+        <button class="burger-button" type="submit">Submit</button>
+    </form>
+</div>
+<div class="row">
+    <div class="container-left">
+        <h2 class="container-heading">Burgers I Want to Eat</h2>
+        {{#each burgers}} 
+            {{#unless this.eaten}}
+                {{> burgers/burger}}
+            {{/unless}}
+        {{/each}}
+    </div>
+    <div class="container-right">
+        <h2 class="container-heading">Burgers I've Eaten</h2>
+        {{#each burgers}}
+            {{#if this.eaten}}
+                {{> burgers/burger}}
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
