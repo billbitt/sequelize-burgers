@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes){
     var Burger = sequelize.define("Burger", {
         name: {
-            type: DataType.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes){
             type: DataTypes.TEXT
         },
         rating: {
-            type: DataTypes.INTEGER
+            type: DataTypes.STRING
         },
         notes: {
             type: DataTypes.TEXT

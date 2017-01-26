@@ -20,7 +20,7 @@ router.get("/", function(request, response){
 // route to add a new burger 
 router.post("/api", function(request, response){
     //check to make sure name is not empty
-    if (name === ""){
+    if (request.body.burgerName === ""){
         console.log("post request contained an empty burger name");
         response.redirect("/");
     } else {
@@ -61,6 +61,7 @@ router.put("/api/update/:id", function(request, response){
     //the values from the form will come through in the request body 
     db.Burger.update({
         name: request.body.burgerName,
+        description: request.body.burgerDescription,
         rating: request.body.burgerRating,
         notes: request.body.burgerNotes
     }, {
@@ -73,10 +74,9 @@ router.put("/api/update/:id", function(request, response){
 });
 
 router.delete("/api/:id", function(request, response){
-    var id = request.params.id;
     db.Burger.destroy({
         where: {
-            id: idToDelete
+            id: request.params.id
         }
     }).then(function(){
         response.redirect("/");

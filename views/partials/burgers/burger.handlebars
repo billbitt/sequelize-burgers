@@ -5,12 +5,13 @@
     </form>
     {{!--burger information--}}
     <form action="/api/update/{{this.id}}?_method=PUT" method="POST">
-        <input name="burgerName" class="burger-input burger-name" value="{{this.burger_name}}">
+        <input name="burgerName" class="burger-input burger-name" value="{{this.name}}">
+        <input name="burgerDescription" class="burger-input burger-description" placeholder="Enter a description" value="{{this.description}}">
         {{!--only display the below if this is an 'eaten' burger--}}
         {{#if this.eaten}}
             <label class="burger-input" for="rating">Rating:</label>
-            <input name="burgerRating" class="burger-input burger-rating" placeholder="?" value="{{this.burger_rating}}">
-            <textarea name="burgerNotes" class="burger-input burger-notes" placeholder="Enter notes here">{{this.burger_notes}}</textarea>
+            <input name="burgerRating" class="burger-input burger-rating" placeholder="?" value="{{this.rating}}">
+            <textarea name="burgerNotes" class="burger-input burger-notes" placeholder="Enter notes here">{{this.notes}}</textarea>
         {{/if}}
         <button class="burger-button" type="submit">Update</button>
     </form>
